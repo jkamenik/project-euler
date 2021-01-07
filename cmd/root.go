@@ -1,7 +1,10 @@
 package cmd
 
 import (
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
+
+	"github.com/rs/zerolog"
 )
 
 var rootCmd = &cobra.Command{
@@ -12,7 +15,21 @@ var rootCmd = &cobra.Command{
 	},
 	Short: "Programming project euler as a set of commands",
 	Long:  `Run individual Problems of Project Euler (https://projecteuler.net)`,
+
+	PersistentPreRun: func(cmd *cobra.Command, arg []string) {
+		if verbosity >= 1 {
+			zerolog.SetGlobalLevel(zerolog.DebugLevel)
+		}
+
+		if verbosity >= 2 {
+			zerolog.SetGlobalLevel(zerolog.TraceLevel)
+		}
+
+		log.Debug().Msgf("Verbosity: %d", verbosity)
+	},
 }
+
+var verbosity = 0
 
 // Execute runs the command
 func Execute() error {
@@ -20,5 +37,5 @@ func Execute() error {
 }
 
 func init() {
-	// Global commands here
+	rootCmd.PersistentFlags().CountVarP(&verbosity, "verbose", "v", "More v's = more verbosity")
 }

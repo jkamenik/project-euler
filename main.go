@@ -13,8 +13,7 @@ import (
 
 func main() {
 	// Set default logging
-	// zerolog.SetGlobalLevel(zerolog.InfoLevel)
-	zerolog.SetGlobalLevel(zerolog.DebugLevel)
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	log.Logger = log.Output(zerolog.ConsoleWriter{
 		Out:        os.Stderr,
 		TimeFormat: time.RFC3339,
