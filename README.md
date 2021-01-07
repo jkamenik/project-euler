@@ -2,7 +2,9 @@
 
 My answers for Project Euler as a series of commands.
 
-My friend code `1776782_xSSHCm900BUut8c0Iq2yEWo4o0tbBrtk`
+My friend code `1776782_xSSHCm900BUut8c0Iq2yEWo4o0tbBrtk`.
+
+Also, Due to Euler rules only the first 100 will be done and committed.  The rest will be kept private.
 
 # Build / Run
 
