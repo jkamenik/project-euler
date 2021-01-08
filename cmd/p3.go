@@ -67,10 +67,14 @@ func factors(input int) (prime bool, fact1, fact2 int) {
 	}
 
 	// this might be too much
-	for fact1 = 3; fact1 <= input/2+1; fact1++ {
+	for fact1 = 2; fact1 < input; fact1++ {
+		log.Trace().Msgf("Checking if %d is a factor of %d", fact1, input)
+
 		if input%fact1 == 0 {
 			fact2 = input / fact1
 			prime = false
+
+			log.Trace().Msgf("%d has the factors %d and %d", input, fact1, fact2)
 
 			return
 		}
